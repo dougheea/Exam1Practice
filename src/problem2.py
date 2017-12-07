@@ -102,7 +102,7 @@ def problem2a(circle, rectangle, window):
       :type window:    rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -110,6 +110,18 @@ def problem2a(circle, rectangle, window):
     #    DIFFICULTY:      6
     #    TIME ESTIMATE:   10 to 15 minutes.
     # ------------------------------------------------------------------
+    circle.attach_to(window)
+    rectangle.attach_to(window)
+    window.render()
+
+    upper_right = (rectangle.get_upper_right_corner())
+    lower_left = (rectangle.get_lower_left_corner())
+    start = rg.Point(upper_right.x, upper_right.y)
+    end = rg.Point(lower_left.x, lower_left.y)
+    line = rg.Line(start, end)
+    line.arrow = 'last'
+    line.attach_to(window)
+    window.render()
 
 def run_test_problem2b():
     """ Tests the  problem2b   function. """
@@ -172,8 +184,24 @@ def problem2b(rect, n, delta, win):
       :type delta:  int
       :type win:    rg.RoseWindow
     """
+    rect.attach_to(win)
+    win.render()
+
+    for k in range(n):
+        upper_left = rect.get_upper_left_corner()
+        lower_right = rect.get_lower_right_corner()
+        upper_left.x = upper_left.x - delta * k
+        upper_left.y = upper_left.y - delta * k
+        lower_right.x = lower_right.x + delta * k
+        lower_right.y = lower_right.y + delta * k
+        rectangle = rg.Rectangle(rg.Point(upper_left.x, upper_left.y),
+                                 rg.Point(
+            lower_right.x, lower_right.y))
+        rectangle.attach_to(win)
+    win.render()
+
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
