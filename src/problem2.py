@@ -123,6 +123,7 @@ def problem2a(circle, rectangle, window):
     line.attach_to(window)
     window.render()
 
+
 def run_test_problem2b():
     """ Tests the  problem2b   function. """
     print()
